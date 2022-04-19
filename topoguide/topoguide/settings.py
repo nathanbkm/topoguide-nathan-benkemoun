@@ -52,6 +52,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'topoguide.urls'
 
+LOGIN_REDIRECT_URL = '/itineraires/index/'
+
+LOGOUT_REDIRECT_URL = '/accounts/logout/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
