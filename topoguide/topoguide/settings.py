@@ -52,9 +52,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'topoguide.urls'
 
-LOGIN_REDIRECT_URL = '/itineraires/index/'
+LOGIN_REDIRECT_URL = '/itineraires/'
 
-LOGOUT_REDIRECT_URL = '/accounts/logout/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 TEMPLATES = [
     {
