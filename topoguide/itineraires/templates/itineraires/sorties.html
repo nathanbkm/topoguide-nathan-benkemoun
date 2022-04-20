@@ -1,5 +1,7 @@
 {% block content %}
 
+<a>Ajouter une sortie</a>
+
 {% if sorties %}
 
     <table>
@@ -12,6 +14,8 @@
             <tr>
                 <td>{{ sortie.utilisateur }}</td>
                 <td>{{ sortie.trip_date }}</td>
+                <td><a>Consulter</a></td>
+                <td><a>Modifier</a></td>
             </tr>
         {% endfor %}
         </tbody>
