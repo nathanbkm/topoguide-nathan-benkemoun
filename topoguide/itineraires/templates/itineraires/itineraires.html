@@ -12,7 +12,7 @@
         <tbody>
         {% for itinerary in itineraries %}
             <tr>
-                <td>{{ itinerary.name }}</td>
+                <td><a href="{% url 'itineraires:sorties' itinerary.id %}">{{ itinerary.name }}</a></td>
                 <td>{{ itinerary.duration }}</td>
                 <td>{{ itinerary.difficulty }}</td>
             </tr>

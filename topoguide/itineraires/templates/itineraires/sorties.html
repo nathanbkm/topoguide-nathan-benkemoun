@@ -14,7 +14,7 @@
             <tr>
                 <td>{{ sortie.utilisateur }}</td>
                 <td>{{ sortie.trip_date }}</td>
-                <td><a>Consulter</a></td>
+                <td><a href="{% url 'itineraires:sortie' sortie.id %}">Consulter</a></td>
                 <td><a>Modifier</a></td>
             </tr>
         {% endfor %}
