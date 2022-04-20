@@ -1,0 +1,12 @@
+{% block content %}
+
+<h2> Editer une sortie pour l'itineraire {{itineraire.name}}</h2>
+
+<form action="{% url 'itineraires:nouvelle_sortie' itineraire.id %}" method='post'>
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Ajouter</button>
+</form>
+<a href="{% url 'itineraires:sorties' itineraire.id %}" >Retour aux sorties de {{itineraire.name}}</a>
+
+{% endblock content %}
