@@ -24,7 +24,9 @@ def sorties(request, itineraire_id):
     
     """
     sorties = get_list_or_404(Sortie, itineraire_id=itineraire_id )
-    return render(request, 'itineraires/sorties.html', {'sorties': sorties})
+    itineraire = get_object_or_404(Itineraire, pk=itineraire_id)
+    return render(request, 'itineraires/sorties.html',
+                  {'sorties': sorties, 'itineraire': itineraire})
 
 @login_required()
 def sortie(request, sortie_id):

@@ -1,6 +1,6 @@
 {% block content %}
 
-<a>Ajouter une sortie</a>
+<a href="{% url 'itineraires:nouvelle_sortie' sortie.itineraire.id %}">Ajouter une sortie</a>
 
 <h2><a href="{% url 'itineraires:sorties' sortie.itineraire.id %}">{{ sortie.itineraire.name }}</a>
     <small>- Sortie de {{ sortie.utilisateur }}</small></h2>
