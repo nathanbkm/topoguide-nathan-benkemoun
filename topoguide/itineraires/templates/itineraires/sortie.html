@@ -1,0 +1,17 @@
+{% block content %}
+
+<a>Ajouter une sortie</a>
+
+<h2><a href="{% url 'itineraires:sorties' sortie.itineraire.id %}">{{ sortie.itineraire.name }}</a>
+    <small>- Sortie de {{ sortie.utilisateur }}</small></h2>
+
+<ul>
+    <li>Date: {{ sortie.trip_date}}</li>
+    <li>Durée réelle: {{ sortie.duration }}</li>
+    <li>Nombre de participants: {{ sortie.nb_participant }}</li>
+    <li>Type de randonneurs: {{ sortie.group_exp }}</li>
+    <li>Météo: {{ sortie.weather }}</li>
+    <li>Difficulté ressentie: {{ sortie.difficulty }}/5</li>
+  </ul>
+
+{% endblock content %}
