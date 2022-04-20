@@ -41,19 +41,19 @@ class Sortie(models.Model):
     )
     trip_date = models.DateTimeField('date de la sortie')
     duration = models.FloatField('durée réelle (h)')
-    np_participant = models.IntegerField('nombre de participant')
+    nb_participant = models.IntegerField('nombre de participant')
     EXP_CHOICE = (
-        ('BEG','Tous débutants'),
-        ('EXP','Tous expérimentés'),
-        ('MIX','Mixte'),
+        ('Tous débutants','Tous débutants'),
+        ('Tous expérimentés','Tous expérimentés'),
+        ('Mixte','Mixte'),
     )
-    group_exp = models.CharField('expérience du groupe', max_length=3, choices=EXP_CHOICE)
+    group_exp = models.CharField('expérience du groupe', max_length=30, choices=EXP_CHOICE)
     WEATHER_CHOICE = (
-        ('BAD','Mauvaise'),
-        ('AVG','Moyenne'),
-        ('WEL','Bonne'),
+        ('Mauvaise','Mauvaise'),
+        ('Moyenne','Moyenne'),
+        ('Bonne','Bonne'),
     )
-    weather = models.CharField('météo', max_length=3, choices=WEATHER_CHOICE)
+    weather = models.CharField('météo', max_length=30, choices=WEATHER_CHOICE)
     DIF_CHOICE = (
         (1,'1'),
         (2,'2'),
