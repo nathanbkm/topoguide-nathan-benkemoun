@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 class Itineraire(models.Model):
     """
     A single itinerary available
@@ -22,7 +24,45 @@ class Itineraire(models.Model):
     )
     difficulty = models.IntegerField('difficulté', default=1, choices=DIF_CHOICE)
     
-    
     def __str__(self):
         return self.name
+    
+class Sortie(models.Model):
+    """
+    A single trip realized by on or many hikers
+    """
+    utilisateur = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    itineraire = models.ForeignKey(
+        Itineraire,
+        on_delete=models.CASCADE
+    )
+    trip_date = models.DateTimeField('date de la sortie')
+    duration = models.FloatField('durée réelle (h)')
+    np_participant = models.IntegerField('nombre de participant')
+    EXP_CHOICE = (
+        ('BEG','Tous débutants'),
+        ('EXP','Tous expérimentés'),
+        ('MIX','Mixte'),
+    )
+    group_exp = models.CharField('expérience du groupe', max_length=3, choices=EXP_CHOICE)
+    WEATHER_CHOICE = (
+        ('BAD','Mauvaise'),
+        ('AVG','Moyenne'),
+        ('WEL','Bonne'),
+    )
+    weather = models.CharField('météo', max_length=3, choices=WEATHER_CHOICE)
+    DIF_CHOICE = (
+        (1,'1'),
+        (2,'2'),
+        (3,'3'),
+        (4,'4'),
+        (5,'5'),
+    )
+    difficulty = models.IntegerField('difficulté ressentie', default=1, choices=DIF_CHOICE)
+    
+    def __str__(self):
+        return '%s %s'% (self.itineraire, self.trip_date)
 
