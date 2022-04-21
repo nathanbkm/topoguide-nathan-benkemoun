@@ -1,23 +1,27 @@
+{% extends 'base.html' %}
 
 {% block content %}
 
-
-
-<table>
-    <tr>
+<h2>Itinéraires</h2>
+  <p>Voici la liste des itinéraires disponibles:</p>            
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
         <th>Titre</th>
         <th>Durée</th>
         <th>Difficulté</th>
-    </tr>
+      </tr>
+    </thead>
     <tbody>
-    {% for itinerary in itineraries %}
-        <tr>
-            <td><a href="{% url 'itineraires:sorties' itinerary.id %}">{{ itinerary.name }}</a></td>
-            <td>{{ itinerary.duration }}</td>
-            <td>{{ itinerary.difficulty }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        <tbody>
+            {% for itinerary in itineraries %}
+                <tr>
+                    <td><a href="{% url 'itineraires:sorties' itinerary.id %}">{{ itinerary.name }}</a></td>
+                    <td>{{ itinerary.duration }} h</td>
+                    <td>{{ itinerary.difficulty }} / 5</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+  </table>
 
 {% endblock content %}

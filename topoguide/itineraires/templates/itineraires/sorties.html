@@ -1,42 +1,50 @@
+{% extends 'base.html' %}
+
 {% block content %}
 
 <h2>{{ itineraire.name }}</h2>
 <p>{{ itineraire.description }}</p>
 
 <ul>
-    <li>Altitude de départ: {{ itineraire.start_point }}</li>
-    <li>Altitude minimale: {{ itineraire.alt_min }}</li>
-    <li>Altitude maximale: {{ itineraire.alt_max }}</li>
-    <li>Dénivelé positif cumulé: {{ itineraire.elevation_gain }}</li>
-    <li>Dénivelé négatif cumulé: {{ itineraire.elevation_loss }}</li>
-    <li>Durée estimée: {{ itineraire.duration }}</li>
-    <li>Difficulté estimée: {{ itineraire.difficulty }}/5</li>
+    <li>Altitude de départ: {{ itineraire.start_point }} m</li>
+    <li>Altitude minimale: {{ itineraire.alt_min }} m</li>
+    <li>Altitude maximale: {{ itineraire.alt_max }} m</li>
+    <li>Dénivelé positif cumulé: {{ itineraire.elevation_gain }} m</li>
+    <li>Dénivelé négatif cumulé: {{ itineraire.elevation_loss }} m</li>
+    <li>Durée estimée: {{ itineraire.duration }} h</li>
+    <li>Difficulté estimée: {{ itineraire.difficulty }} / 5</li>
   </ul>
 
 <h2> Sorties</h2>
 
 
-<a href="{% url 'itineraires:nouvelle_sortie' itineraire.id %}">Ajouter une sortie</a>
+<a href="{% url 'itineraires:nouvelle_sortie' itineraire.id %}" 
+class="btn btn-outline-primary">Ajouter une sortie</a>
 
-<table>
+<table class="table table-dark table-striped">
     <tr>
         <th>Par</th>
         <th>Date</th>
+        <th></th>
+        <th></th>
     </tr>
     <tbody>
     {% for sortie in sorties %}
         <tr>
             <td>{{ sortie.utilisateur }}</td>
             <td>{{ sortie.trip_date }}</td>
-            <td><a href="{% url 'itineraires:sortie' sortie.id %}">Consulter</a></td>
+            <td><a href="{% url 'itineraires:sortie' sortie.id %}" class="btn btn-light">Consulter</a></td>
             {% if utilisateur == sortie.utilisateur%}
-            <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier</a></td>
+            <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}" class="btn btn-primary">Modifier</a></td>
+            {% else %}
+            <th></th>
             {% endif %}
         </tr>
     {% endfor %}
     </tbody>
 </table>
 
-<a href="{% url 'itineraires:itineraires' %}">Retour aux itinéraires</a>
+<a href="{% url 'itineraires:itineraires' %}" 
+class="btn btn-outline-primary">Retour</a>
 
 {% endblock content %}

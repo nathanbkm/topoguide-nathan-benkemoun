@@ -1,21 +1,22 @@
-{% block content %}
+{% extends 'base.html' %}
 
-<a href="{% url 'itineraires:nouvelle_sortie' sortie.itineraire.id %}">Ajouter une sortie</a>
+{% block content %}
 
 <h2><a href="{% url 'itineraires:sorties' sortie.itineraire.id %}">{{ sortie.itineraire.name }}</a>
     <small>- Sortie de {{ sortie.utilisateur }}</small></h2>
 
 <ul>
     <li>Date: {{ sortie.trip_date}}</li>
-    <li>Durée réelle: {{ sortie.duration }}</li>
+    <li>Durée réelle: {{ sortie.duration }} h</li>
     <li>Nombre de participants: {{ sortie.nb_participant }}</li>
     <li>Type de randonneurs: {{ sortie.group_exp }}</li>
     <li>Météo: {{ sortie.weather }}</li>
-    <li>Difficulté ressentie: {{ sortie.difficulty }}/5</li>
+    <li>Difficulté ressentie: {{ sortie.difficulty }} / 5</li>
   </ul>
 
-<a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier la sortie</a>
-
-<a href="{% url 'itineraires:sorties' sortie.itineraire.id %}">Retour aux sorties</a>
+<a href="{% url 'itineraires:modif_sortie' sortie.id %}" 
+class="btn btn-outline-primary">Modifier</a>
+<a href="{% url 'itineraires:sorties' sortie.itineraire.id %}" 
+class="btn btn-outline-primary">Retour</a>
 
 {% endblock content %}

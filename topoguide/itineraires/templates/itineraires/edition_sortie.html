@@ -1,12 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
 {% block content %}
 
 <h2> Editer une sortie pour l'itineraire {{itineraire.name}}</h2>
 
-<form action="" method='post'>
+<form action="" method='post' class="form">
     {% csrf_token %}
-    {{form}}
-    <button type="submit">Enregistrer</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {% endbuttons %}
 </form>
-<a href="{% url 'itineraires:sorties' itineraire.id %}" >Retour aux sorties de {{itineraire.name}}</a>
+<a href="{% url 'itineraires:sorties' itineraire.id %}" 
+class="btn btn-outline-primary">Retour</a>
 
 {% endblock content %}
