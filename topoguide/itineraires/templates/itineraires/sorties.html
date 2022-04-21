@@ -18,29 +18,24 @@
 
 <a href="{% url 'itineraires:nouvelle_sortie' itineraire.id %}">Ajouter une sortie</a>
 
-{% if sorties %}
-
-    <table>
+<table>
+    <tr>
+        <th>Par</th>
+        <th>Date</th>
+    </tr>
+    <tbody>
+    {% for sortie in sorties %}
         <tr>
-            <th>Par</th>
-            <th>Date</th>
+            <td>{{ sortie.utilisateur }}</td>
+            <td>{{ sortie.trip_date }}</td>
+            <td><a href="{% url 'itineraires:sortie' sortie.id %}">Consulter</a></td>
+            {% if utilisateur == sortie.utilisateur%}
+            <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier</a></td>
+            {% endif %}
         </tr>
-        <tbody>
-        {% for sortie in sorties %}
-            <tr>
-                <td>{{ sortie.utilisateur }}</td>
-                <td>{{ sortie.trip_date }}</td>
-                <td><a href="{% url 'itineraires:sortie' sortie.id %}">Consulter</a></td>
-                {% if utilisateur == sortie.utilisateur%}
-                <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier</a></td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Il n'y a aucune sortie.</p>
-{% endif %}
+    {% endfor %}
+    </tbody>
+</table>
 
 <a href="{% url 'itineraires:itineraires' %}">Retour aux itinéraires</a>
 

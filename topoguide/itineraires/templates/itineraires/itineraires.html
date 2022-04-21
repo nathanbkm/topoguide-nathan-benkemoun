@@ -2,25 +2,22 @@
 {% block content %}
 
 
-{% if itineraries %}
-    <table>
-        <tr>
-            <th>Titre</th>
-            <th>Durée</th>
-            <th>Difficulté</th>
-        </tr>
-        <tbody>
-        {% for itinerary in itineraries %}
-            <tr>
-                <td><a href="{% url 'itineraires:sorties' itinerary.id %}">{{ itinerary.name }}</a></td>
-                <td>{{ itinerary.duration }}</td>
-                <td>{{ itinerary.difficulty }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Il n'y a aucun itinéraire.</p>
-{% endif %}
 
-    {% endblock content %}
+<table>
+    <tr>
+        <th>Titre</th>
+        <th>Durée</th>
+        <th>Difficulté</th>
+    </tr>
+    <tbody>
+    {% for itinerary in itineraries %}
+        <tr>
+            <td><a href="{% url 'itineraires:sorties' itinerary.id %}">{{ itinerary.name }}</a></td>
+            <td>{{ itinerary.duration }}</td>
+            <td>{{ itinerary.difficulty }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
