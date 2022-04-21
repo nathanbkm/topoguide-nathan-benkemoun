@@ -14,4 +14,8 @@
     <li>Difficulté ressentie: {{ sortie.difficulty }}/5</li>
   </ul>
 
+<a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier la sortie</a>
+
+<a href="{% url 'itineraires:sorties' sortie.itineraire.id %}">Retour aux sorties</a>
+
 {% endblock content %}

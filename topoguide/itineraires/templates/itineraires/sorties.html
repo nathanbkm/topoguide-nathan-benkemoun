@@ -1,9 +1,22 @@
 {% block content %}
 
-<h2> Sorties {{itineraire.name}}</h2>
+<h2>{{ itineraire.name }}</h2>
+<p>{{ itineraire.description }}</p>
+
+<ul>
+    <li>Altitude de départ: {{ itineraire.start_point }}</li>
+    <li>Altitude minimale: {{ itineraire.alt_min }}</li>
+    <li>Altitude maximale: {{ itineraire.alt_max }}</li>
+    <li>Dénivelé positif cumulé: {{ itineraire.elevation_gain }}</li>
+    <li>Dénivelé négatif cumulé: {{ itineraire.elevation_loss }}</li>
+    <li>Durée estimée: {{ itineraire.duration }}</li>
+    <li>Difficulté estimée: {{ itineraire.difficulty }}/5</li>
+  </ul>
+
+<h2> Sorties</h2>
+
 
 <a href="{% url 'itineraires:nouvelle_sortie' itineraire.id %}">Ajouter une sortie</a>
-
 
 {% if sorties %}
 
@@ -18,7 +31,9 @@
                 <td>{{ sortie.utilisateur }}</td>
                 <td>{{ sortie.trip_date }}</td>
                 <td><a href="{% url 'itineraires:sortie' sortie.id %}">Consulter</a></td>
-                <td><a>Modifier</a></td>
+                {% if utilisateur == sortie.utilisateur%}
+                <td><a href="{% url 'itineraires:modif_sortie' sortie.id %}">Modifier</a></td>
+                {% endif %}
             </tr>
         {% endfor %}
         </tbody>
@@ -26,5 +41,7 @@
 {% else %}
     <p>Il n'y a aucune sortie.</p>
 {% endif %}
+
+<a href="{% url 'itineraires:itineraires' %}">Retour aux itinéraires</a>
 
 {% endblock content %}
